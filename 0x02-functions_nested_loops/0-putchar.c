@@ -1,11 +1,16 @@
-#include <stdio.h>
 #include "main.h"
+
+/**
+ * this program printes _putchar
+ * followed by a new line
+ * should return 0 on sucess
+ */
 
 int _putchar(char c) {
     return putchar(c);
 }
 
-int main() {
+int main(void) {
     
     _putchar('_');
     _putchar('p');
@@ -15,6 +20,7 @@ int main() {
     _putchar('h');
     _putchar('a');
     _putchar('r');
+    _putchar('\n');
     
     return 0;
 }
