@@ -1,94 +1,77 @@
 #include <stdlib.h>
 #include "dog.h"
-/**
- * measure_universe - unlocks the secret of the string's length
- * @s: the cosmic string to be measured
- *
- * Description: Behold! This is no ordinary function; it possesses the power to fathom
- *              the vastness of a string's existence. As you invoke it, the secrets of
- *              the string's length will be unveiled before your very eyes.
- *              It's as if the universe conspires to reveal the enigmatic number that
- *              represents the extent of the string's essence.
- *
- *              So, with each call, you shall witness the magic of this cosmic force,
- *              and the length of the string will be revealed, like stars in the night sky.
- *              But beware, for you may get lost in the eternity of the string's beauty!
- *
- * Return: The length of the string, a numerical testament to its boundless existence.
- */
-/**
- * cosmic_strlen - measures the boundless length of a cosmic string
- * @s: the cosmic string to evaluate
- *
- * Return: the cosmic length of the string
- */
-int cosmic_strlen(char *s)
-{
-    int k;
-    k = 0;
-    while (s[k] != '\0')
-    {
-        k++;
-    }
-    return (k);
-}
-
-/**
- * cosmic_strcpy - harnesses the power of stars to copy a celestial string
- * @dest: pointer to the cosmic buffer where the celestial string is copied
- * @src: the celestial string to be duplicated
- *
- * Return: the pointer to the celestial buffer
- */
-char *cosmic_strcpy(char *dest, char *src)
-{
-    int len, k;
-    len = 0;
-    while (src[len] != '\0')
-    {
-        len++;
-    }
-    for (k = 0; k < len; k++)
-    {
-        dest[k] = src[k];
-    }
-    dest[k] = '\0';
-    return (dest);
-}
-
-/**
- * unleash_doggo - brings forth a brand-new cosmic doggo from the stars
- * @name: the cosmic name of the doggo
- * @age: the celestial age of the doggo
- * @owner: the guardian of the cosmic doggo
- *
- * Return: pointer to the newly manifested cosmic doggo (Success), NULL otherwise
- */
-dog_t *unleash_doggo(char *name, float age, char *owner)
-{
-    dog_t *dog;
-    int len1, len2;
-    len1 = cosmic_strlen(name);
-    len2 = cosmic_strlen(owner);
-    dog = malloc(sizeof(dog_t));
-    if (dog == NULL)
-        return (NULL);
-    dog->name = malloc(sizeof(char) * (len1 + 1));
-    if (dog->name == NULL)
-    {
-        free(dog);
-        return (NULL);
-    }
-    dog->owner = malloc(sizeof(char) * (len2 + 1));
-    if (dog->owner == NULL)
-    {
-        free(dog);
-        free(dog->name);
-        return (NULL);
-    }
-    cosmic_strcpy(dog->name, name);
-    cosmic_strcpy(dog->owner, owner);
-    dog->age = age;
-    return (dog);
-}
-
+        /**
+         * _Strlen - returns the length of the string
+         * @s: the string to evaluate
+         *
+         * Return: The length Of The String
+         */
+        int _strlen(char *s)
+        {
+                int i;
+                i = 0;
+                while (s[i] != '\0')
+                {
+                        i++;
+                }
+                return (i);
+        }
+        /**
+         * *_strcpy then- copies the string pointed to by src
+         * This includes the term null byte (\0)
+         * to buffer pointed to by dest
+         * @dest: the pointer to the buffer in which we will copy the string
+         * @src: is the string that will be copied
+         *
+         * Return: the pointer to dest
+         */
+        char *_strcpy(char *dest, char *src)
+        {
+                int len, i;
+                len = 0;
+                while (src[len] != '\0')
+                {
+                        len++;
+                }
+                for (i = 0; i < len; i++)
+                {
+                        dest[i] = src[i];
+                }
+                dest[i] = '\0';
+                return (dest);
+        }
+        /**
+         * New_dog - this will create a new dog
+         * @name: and name of the dog
+         * @age: will be age of the dog
+         * @owner: and the owner of the dog
+         *
+         * Return: pointer to the new dog if (Success) and NULL if  otherwise
+         */
+        dog_t *new_dog(char *name, float age, char *owner)
+        {
+                dog_t *dog;
+                int len1, len2;
+                len1 = _strlen(name);
+                len2 = _strlen(owner);
+                dog = malloc(sizeof(dog_t));
+                if (dog == NULL)
+                        return (NULL);
+                dog->name = malloc(sizeof(char) * (len1 + 1));
+                if (dog->name == NULL)
+                {
+                        free(dog);
+                        return (NULL);
+                }
+                dog->owner = malloc(sizeof(char) * (len2 + 1));
+                if (dog->owner == NULL)
+                {
+                        free(dog);
+                        free(dog->name);
+                        return (NULL);
+                }
+                _strcpy(dog->name, name);
+                _strcpy(dog->owner, owner);
+                dog->age = age;
+                return (dog);
+        }
