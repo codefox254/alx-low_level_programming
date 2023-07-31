@@ -7,15 +7,14 @@
  *
  * Return: number of elements in list
  */
-size_t count_elements(const list_t *list)
+size_t list_len(const list_t *h)
 {
-	size_t count = 0;
+	size_t n = 0;
 
-	while (list)
+	while (h)
 	{
-		count++;
-		list = list->next;
+		n++;
+		h = h->next;
 	}
-	return (count);
+	return (n);
 }
-
