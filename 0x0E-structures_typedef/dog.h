@@ -2,21 +2,22 @@
 #define DOG_H
 
 /**
- * Struct dog - Our dog's basic informatio
- * @name: FIRST member
- * @age: SECOND member
- * @owner: THIRD member
+ * struct dog - This is our dog's basic information
+ * @name: The name of our dog
+ * @age: The age of our dog
+ * @owner: The owner of our dog
  *
- * Description: This will entail some basic info about the dog
+ * Description: This structure represents basic information about a dog.
  */
 struct dog
 {
-	char *name;
-	float age;
-	char *owner;
+    char *name;
+    float age;
+    char *owner;
 };
+
 /**
- * dog_t - typedef for struct dog
+ * dog_t - Typedef for struct dog
  */
 typedef struct dog dog_t;
 
