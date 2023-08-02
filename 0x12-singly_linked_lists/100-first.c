@@ -1,16 +1,31 @@
-#include <stdio.h>
-
-void first(void) __attribute__ ((constructor));
+#include <stdlib.h>
+#include <string.h>
+#include "lists.h"
 
 /**
- * first - Prints a sentence before the main function is executed.
+ * add_node - Adds a new node at the beginning of a linked list.
+ * @head: Double pointer to the list_t list.
+ * @str: New string to add in the node.
  *
- * Description: This function is executed before the main function is called.
- * It prints the specified sentences to the standard output.
+ * Return: The address of the new element, or NULL if it fails.
  */
-void first(void)
+list_t *add_node(list_t **head, const char *str)
 {
-        printf("You're beat! and yet, you must allow,\n");
-        printf("I bore my house upon my back!\n");
+        list_t *new;
+        unsigned int len = 0;
+
+        while (str[len])
+                len++;
+
+        new = malloc(sizeof(list_t));
+        if (!new)
+                return (NULL);
+
+        new->str = strdup(str);
+        new->len = len;
+        new->next = (*head);
+        (*head) = new;
+
+        return (*head);
 }
 
