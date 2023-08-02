@@ -3,17 +3,17 @@
 
 /**
  * struct dog - This is our dog's basic information
- * @name: The name of our dog
- * @age: The age of our dog
- * @owner: The owner of our dog
+ * @name: The name of the dog
+ * @age: The age of the dog
+ * @owner: The owner of the dog
  *
  * Description: This structure represents basic information about a dog.
  */
 struct dog
 {
-    char *name;
-    float age;
-    char *owner;
+	char *name;
+	float age;
+	char *owner;
 };
 
 /**
@@ -29,3 +29,4 @@ char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 
 #endif
+
