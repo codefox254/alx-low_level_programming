@@ -25,7 +25,6 @@ int _strlen(char *s)
  *
  * Return: Pointer to dest.
  */
-
 char *_strcpy(char *dest, char *src)
 {
     int len, i;
@@ -77,3 +76,4 @@ dog_t *new_dog(char *name, float age, char *owner)
     dog->age = age;
     return (dog);
 }
+
