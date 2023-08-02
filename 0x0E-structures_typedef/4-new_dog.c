@@ -10,6 +10,7 @@
 int _strlen(char *s)
 {
     int i;
+
     i = 0;
     while (s[i] != '\0')
     {
@@ -28,6 +29,7 @@ int _strlen(char *s)
 char *_strcpy(char *dest, char *src)
 {
     int len, i;
+
     len = 0;
     while (src[len] != '\0')
     {
@@ -81,21 +83,5 @@ dog_t *new_dog(char *name, float age, char *owner)
     dog->age = age;
 
     return (dog);
-}
-
-/**
- * free_dog - Frees memory allocated for a dog structure.
- * @d: Pointer to the dog structure to free.
- *
- * Return: Void.
- */
-void free_dog(dog_t *d)
-{
-    if (d != NULL)
-    {
-        free(d->name);
-        free(d->owner);
-        free(d);
-    }
 }
 
