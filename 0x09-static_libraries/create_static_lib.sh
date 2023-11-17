@@ -1,24 +1,10 @@
 #!/bin/bash
+
+# Compile each .c file to a .o file
 gcc -Wall -pedantic -Werror -Wextra -c *.c
 
-# Check if compilation was successful
-if [ $? -ne 0 ]; then
-    echo "Compilation failed"
-    exit 1
-else
-    echo "Compilation successful"
-fi
-
+# Create the static library liball.a
 ar -rc liball.a *.o
 
-# Check if ar was successful
-if [ $? -ne 0 ]; then
-    echo "Creating library failed"
-    exit 1
-else
-    echo "Library created successfully"
-fi
-
+# Index the library
 ranlib liball.a
-
-
