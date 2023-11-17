@@ -7,13 +7,11 @@
  *
  * Return: length of the string
  */
-int _strlen(char *b)
+int _strlen(char *s)
 {
-	int i;
+	int i = 0;
 
-	i = 0;
-
-	while (b[i] != '\0')
+	while (s[i] != '\0')
 	{
 		i++;
 	}
@@ -32,9 +30,7 @@ int _strlen(char *b)
  */
 char *_strcpy(char *dest, char *src)
 {
-	int len, i;
-
-	len = 0;
+	int len = 0, i;
 
 	while (src[len] != '\0')
 	{
@@ -57,6 +53,11 @@ char *_strcpy(char *dest, char *src)
  * @owner: owner of the dog
  *
  * Return: pointer to the new dog (Success), NULL otherwise
+ *
+ * Description: Allocates memory for a new dog structure, including memory
+ * for the name and owner strings. Copies the name and owner strings using
+ * the _strcpy function. If memory allocation fails, it frees any allocated
+ * memory and returns NULL.
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {

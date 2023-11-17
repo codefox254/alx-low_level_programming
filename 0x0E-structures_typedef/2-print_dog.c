@@ -5,6 +5,9 @@
 /**
  * print_dog - prints information about the struct dog
  * @d: struct dog to print
+ *
+ * Description: If the struct dog is NULL, nothing is printed. If the name
+ * or owner of the struct dog is NULL, it is printed as "(nil)".
  */
 void print_dog(struct dog *d)
 {
