@@ -1,30 +1,13 @@
 #!/bin/bash
 
-# Compile each .c file to a .o file
-gcc -Wall -pedantic -Werror -Wextra -c *.c
-
-# Check if compilation was successful
-if [ $? -ne 0 ]; then
-    echo "Compilation failed. Exiting."
-    exit 1
-fi
+# Compile each .c file into a .o file
+gcc -c *.c
 
 # Create the static library liball.a
 ar -rc liball.a *.o
 
-# Check if library creation was successful
-if [ $? -ne 0 ]; then
-    echo "Library creation failed. Exiting."
-    exit 1
-fi
-
-# Index the library
+# Index the library for quicker access
 ranlib liball.a
 
-# Check if indexing was successful
-if [ $? -ne 0 ]; then
-    echo "Library indexing failed. Exiting."
-    exit 1
-fi
-
-echo "Script executed successfully."
+# Clean up by removing the .o files
+rm *.o
