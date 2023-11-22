@@ -1,23 +1,43 @@
-#ifndef LISTS_H
-#define LISTS_H
-
-#include <stdio.h>
-#include <stdlib.h>
+#include "lists.h"
 
 /**
- * struct listint_s - singly linked list
- * @n: integer
- * @next: points to the next node
+ * insert_nodeint_at_index - Inserts a new node in a linked list at a given position.
+ * @head: Pointer to the pointer of the first node in the list.
+ * @idx: Index where the new node is added.
+ * @n: Data to insert in the new node.
  *
- * Description: singly linked list node structure
+ * Return: Pointer to the new node, or NULL.
  */
-typedef struct listint_s
+listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-    int n;
-    struct listint_s *next;
-} listint_t;
+    unsigned int i;
+    listint_t *new;
+    listint_t *temp = *head;
 
-/* Function prototypes */
-size_t print_listint(const listint_t *h);
+    new = malloc(sizeof(listint_t));
+    if (!new || !head)
+        return (NULL);
 
-#endif /* LISTS_H */
+    new->n = n;
+    new->next = NULL;
+
+    if (idx == 0)
+    {
+        new->next = *head;
+        *head = new;
+        return (new);
+    }
+
+    for (i = 0; temp && i < idx; i++)
+    {
+        if (i == idx - 1)
+        {
+            new->next = temp->next;
+            temp->next = new;
+            return (new);
+        }
+        temp = temp->next;
+    }
+
+    return (NULL);
+}
