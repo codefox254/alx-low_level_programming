@@ -6,11 +6,19 @@
 
 #define BUF_SIZE 64
 
+/**
+ * display_error_and_exit - Display an error message to stderr and exit with status code 98.
+ * @error_message: The error message to display.
+ */
 void display_error_and_exit(const char *error_message) {
     fprintf(stderr, "%s\n", error_message);
     exit(98);
 }
 
+/**
+ * display_elf_header - Display information from the ELF header of an ELF file.
+ * @filename: The name of the ELF file.
+ */
 void display_elf_header(const char *filename) {
     int fd = open(filename, O_RDONLY);
     if (fd == -1)
@@ -44,6 +52,12 @@ void display_elf_header(const char *filename) {
     close(fd);
 }
 
+/**
+ * main - Entry point of the program.
+ * @argc: The number of command-line arguments.
+ * @argv: An array containing the command-line arguments.
+ * Return: 0 on success, 98 on failure.
+ */
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         fprintf(stderr, "Usage: %s elf_filename\n", argv[0]);
