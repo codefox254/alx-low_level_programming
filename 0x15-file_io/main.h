@@ -3,6 +3,7 @@
 
 #include <elf.h>
 
-ssize_t read_textfile(const char *filename, size_t letters);
+void display_error_and_exit(const char *error_message);
+void display_elf_header(const char *filename);
 
 #endif
