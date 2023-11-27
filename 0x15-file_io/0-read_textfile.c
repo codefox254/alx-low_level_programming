@@ -1,39 +1,33 @@
 #include "main.h"
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdio.h>
 
 /**
- * create_file - Creates a file with specified content
- * @filename: The name of the file to create
- * @text_content: The text content to write to the file
+ * read_textfile - Reads a text file and prints it to the POSIX standard output
+ * @filename: The name of the file to read
+ * @letters: The number of letters to read and print
  *
- * Return: 1 on success, -1 on failure
+ * Return: The actual number of letters read and printed; 0 on failure
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fd;
-	ssize_t nrd, nwr;
-	char *buf;
+    int file_descriptor, read_result;
+    char buffer[1024];
 
-	if (!filename)
-		return (0);
+    if (filename == NULL)
+        return (0);
 
-	fd = open(filename, O_RDONLY);
+    file_descriptor = open(filename, O_RDONLY);
+    if (file_descriptor == -1)
+        return (0);
 
-	if (fd == -1)
-		return (0);
+    read_result = read(file_descriptor, buffer, sizeof(buffer));
+    close(file_descriptor);
 
-	buf = malloc(sizeof(char) * (letters));
-	if (!buf)
-		return (0);
+    if (read_result == -1)
+        return (0);
 
-	nrd = read(fd, buf, letters);
-	nwr = write(STDOUT_FILENO, buf, nrd);
+    write(STDOUT_FILENO, buffer, read_result);
 
-	close(fd);
-
-	free(buf);
-
-	return (nwr);
+    return (read_result);
 }
