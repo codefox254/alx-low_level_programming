@@ -10,42 +10,30 @@
  *
  * Return: 1 on success, -1 on failure
  */
-int create_file(const char *filename, char *text_content)
+ssize_t read_textfile(const char *filename, size_t letters)
 {
-    int fd;
-    int nletters;
-    int rwr;
+	int fd;
+	ssize_t nrd, nwr;
+	char *buf;
 
-    if (!filename)
-    {
-        perror("Error: Invalid filename");
-        return (-1);
-    }
+	if (!filename)
+		return (0);
 
-    fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	fd = open(filename, O_RDONLY);
 
-    if (fd == -1)
-    {
-        perror("Error opening file");
-        return (-1);
-    }
+	if (fd == -1)
+		return (0);
 
-    if (!text_content)
-        text_content = "";
+	buf = malloc(sizeof(char) * (letters));
+	if (!buf)
+		return (0);
 
-    for (nletters = 0; text_content[nletters]; nletters++)
-        ;
+	nrd = read(fd, buf, letters);
+	nwr = write(STDOUT_FILENO, buf, nrd);
 
-    rwr = write(fd, text_content, nletters);
+	close(fd);
 
-    if (rwr == -1)
-    {
-        perror("Error writing to file");
-        close(fd);
-        return (-1);
-    }
+	free(buf);
 
-    close(fd);
-
-    return (1);
+	return (nwr);
 }
