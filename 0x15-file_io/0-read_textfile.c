@@ -1,41 +1,40 @@
 #include "main.h"
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdlib.h>
 
 /**
- * read_textfile - Reads a text file and prints it to the POSIX standard output
- * @filename: The name of the file to read
- * @num_letters: The number of letters to read and print
+ * create_file - Creates a file with specified content
+ * @filename: The name of the file to create
+ * @text_content: The text content to write to the file
  *
- * Return: The actual number of letters read and printed; 0 on failure
+ * Return: 1 on success, -1 on failure
  */
-ssize_t read_textfile(const char *filename, size_t num_letters)
+int create_file(const char *filename, char *text_content)
 {
-    int file_descriptor;
-    ssize_t num_read, num_written;
-    char *buffer;
+	int file_descriptor;
+	int num_letters;
+	int write_result;
 
-    if (!filename)
-        return (0);
+	if (!filename)
+		return (-1);
 
-    file_descriptor = open(filename, O_RDONLY);
+	file_descriptor = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 
-    if (file_descriptor == -1)
-        return (0);
+	if (file_descriptor == -1)
+		return (-1);
 
-    buffer = malloc(sizeof(char) * num_letters);
-    if (!buffer)
-    {
-        close(file_descriptor);
-        return (0);
-    }
+	if (!text_content)
+		text_content = "";
 
-    num_read = read(file_descriptor, buffer, num_letters);
-    num_written = write(STDOUT_FILENO, buffer, num_read);
+	for (num_letters = 0; text_content[num_letters]; num_letters++)
+		;
 
-    close(file_descriptor);
-    free(buffer);
+	write_result = write(file_descriptor, text_content, num_letters);
 
-    return (num_written);
+	if (write_result == -1)
+		return (-1);
+
+	close(file_descriptor);
+
+	return (1);
 }
