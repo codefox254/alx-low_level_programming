@@ -55,11 +55,11 @@ int binary_search_helper(int *array, int value,
 }
 
 /**
- * E.S - searches for a value in a sorted array of integers
+ * exponential_search - searches for a value in a sorted array of integers
  * using an exponential search algorithm
  * @array: pointer to first element of array to search
  * @size: number of elements in array
- * @value: value to search for
+ * @value: value to searches for
  *
  * Return: first index containing `value`, or -1 if `value` not found or
  * `array` is NULL

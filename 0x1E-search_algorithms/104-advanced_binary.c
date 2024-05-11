@@ -44,7 +44,7 @@ int binary_search_recursion(int *array, int value,
 }
 
 /**
- * a.b - searches for a value in a sorted array of integers
+ * advanced_binary - searches for a value in a sorted array of integers
  * using a binary search algorithm. Unlike `binary_search`, consistently
  * returns first appearance of `value` in array
  * @array: pointer to first element of array to search

@@ -1,7 +1,7 @@
 #include "search_algos.h"
 
 /**
- * BS - searches for a value in an integer array using a binary
+ * binary_search - searches for a value in an integer array using a binary
  * search algorithm, not guaranteed to return lowest index if `value` appears
  * twice in `array`
  * @array: pointer to first element of array to seach

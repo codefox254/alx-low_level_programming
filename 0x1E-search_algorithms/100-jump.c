@@ -4,7 +4,7 @@
 size_t min(size_t a, size_t b);
 
 /**
- * M - returns the minimum of two size_t values
+ * min- returns the minimum of two size_t values
  * @a: first value
  * @b: second value
  *
@@ -16,7 +16,7 @@ size_t min(size_t a, size_t b)
 }
 
 /**
- * JS - searches for a value in a sorted array of integers using
+ * jump_search- searches for a value in a sorted array of integers using
  * a jump search algorithm
  * @array: pointer to first element of array to search
  * @size: number of elements in array
